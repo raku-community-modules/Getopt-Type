@@ -1,4 +1,6 @@
 Revision history for Getopt::Type
 
 {{$NEXT}}
+
+0.2  2024-12-11T18:13:06+01:00
     - Initial version as a Raku Community module
