@@ -1,6 +1,8 @@
 use Test;
 use Getopt::Type;
 
+plan 42;
+
 {
     my %here;
     sub foo(*%opts where getopt(<force push>)) {
@@ -37,4 +39,4 @@ use Getopt::Type;
     check-contents;
 }
 
-done-testing;
+# vim: expandtab shiftwidth=4

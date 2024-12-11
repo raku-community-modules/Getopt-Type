@@ -1,5 +1,3 @@
-unit module Getopt::Type;
-
 class Getopt::Type::Constraint {
     has %.accepted;
     has $.results;
@@ -15,7 +13,7 @@ class Getopt::Type::Constraint {
                 %accepted{$_} = True
             }
         }
-        self.bless(:%accepted, :$results);
+        self.bless(:%accepted, :$results)
     }
 
     method ACCEPTS($opts) {
@@ -39,10 +37,50 @@ class Getopt::Type::Constraint {
         for $!results.kv -> $k, $v {
             $opts{$k} = $v
         }
-        return True
+        True
     }
 }
 
 sub getopt(@args) is export {
-    return Getopt::Type::Constraint.new: @args;
+    Getopt::Type::Constraint.new: @args;
 }
+
+=begin pod
+
+=head1 NAME
+
+Getopt::Type - MAIN? Getopt semantics? Why not both?
+
+=head1 SYNOPSIS
+
+=begin code :lang<raku>
+
+use Getopt::Type;
+
+sub MAIN(*%opts where getopt(<f|force v|verbose>)) {
+    say "Forcing!"   if %opts<force>;
+    say "Verbosing!" if %opts<verbose>;
+    say %opts.raku;
+}
+
+=end code
+
+=head1 DESCRIPTION
+
+MAIN? Getopt semantics? Why not both?
+    
+=head1 AUTHOR
+
+Tadeusz Sośnierz
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2016 - 2017 Tadeusz Sośnierz
+
+Copyright 2024 Raku Community
+
+This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+
+=end pod
+
+# vim: expandtab shiftwidth=4
