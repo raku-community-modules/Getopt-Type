@@ -18,7 +18,7 @@ class Getopt::Type::Constraint {
         self.bless(:%accepted, :$results);
     }
 
-    method ACCEPTS($opts is rw) {
+    method ACCEPTS($opts) {
         for $opts.kv -> $k, $v {
             if %!accepted{$k} {
                 $!results{$k} = $v;
